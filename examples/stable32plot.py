@@ -50,7 +50,7 @@ from pylab import xlabel, ylabel, title, plot, legend
 """#--------------function plot sigma ---------begin-----------"""
 
 
-def sigmaplot(tau1, sigma1, error1, legend1="", **arg):
+def sigmaplot(tau1, sigma1, error1, lang="en", legend1="", **arg):
     """#all the supported sigmatype tuple"""
     dev_tuple = ('adev', 'oadev', 'mdev', 'tdev', 'hdev', 'ohdev',
                  'totdev', 'ttotdev', 'mtotdev', 'htotdev')
@@ -195,7 +195,7 @@ def sigmaplot(tau1, sigma1, error1, legend1="", **arg):
             show_text(xlimval, ylimval, tloc, disptau1, dispsigma1, textftsize)
 
     """#show xlabel,ylabel,title"""
-    show_label_title(sigmatype)
+    show_label_title(sigmatype, lang)
 
 
 """#--------------function plot sigma ---------end-----------"""
@@ -253,7 +253,7 @@ def show_text(tmplimx, tmplimy, tmptloc, tmptau, tmpsigma, tmpftsize):
          bbox=dict(fc='white', linewidth=0.5))
 
 
-def show_label_title(tmpsigmatype):
+def show_label_title(tmpsigmatype, lang):
     """#set ylabel"""
     if tmpsigmatype == "adev":
         str_ylabel = "Allan Deviation, \u03C3"+'$_y$'+"(\u03C4)"
@@ -286,10 +286,18 @@ def show_label_title(tmpsigmatype):
         str_title = "TIME STABILITY"
     else:
         str_title = "FREQUENCY STABILITY"
+        
 
-    """#display xlabel,ylabel,title"""
-    xlabel("Averaging Time, \u03C4, Seconds", fontsize=16,
+    """#display xlabel,ylabel,title"""    
+    if lang == 'en':
+        xlabel("Averaging Time, \u03C4, Seconds", fontsize=16,
            color='#00008B', family='Times New Roman', fontweight='bold')
+    else:
+        xlabel("Интервал времени измерения, \u03C4, с", fontsize=16,
+           color='#00008B', family='Times New Roman', fontweight='bold')        
+        str_ylabel = "СКДО, \u03C3"+'$_y$'+"(\u03C4)"
+        str_title = "Нестабильность частоты"
+        
     ylabel(str_ylabel, family='Times New Roman', fontsize=16,
            color='#00008B', fontweight='bold')
     title(str_title, fontsize=18,
