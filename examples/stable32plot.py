@@ -301,7 +301,7 @@ def show_label_title(tmpsigmatype, lang):
     ylabel(str_ylabel, family='Times New Roman', fontsize=16,
            color='#00008B', fontweight='bold')
     title(str_title, fontsize=18,
-          family='Arial', color='#00008B', fontweight='bold')
+          family='Times New Roman', color='#00008B', fontweight='bold') #'Arial'
 
 
 """#-------function plot freq/phase data-------------begin---------------"""
